@@ -1,3 +1,4 @@
+﻿<!-- gen_ih_dist (building histogram chart)-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,31 +17,44 @@
 
     <!-- Custom CSS -->
     <style>
-    body {
-        padding-top: 70px;
-        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    }
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: black;
-        shape-rendering: crispEdges;
-    }            
-    .axis text {
-        font-family: sans-serif;
-        font-size: 11px;
-    }
-    .tooltip{ 
-        background-color:rgba(68,136,187,0.5);;
-        margin: 10px;
-        height: 50px;
-        width: 150px;
-        padding-left: 10px; 
-        padding-top: 10px;
-        -webkit-border-radius:10px;
-        -moz-border-radius:10px;
-        border-radius:10px;
-    }
+        body {
+            padding-top: 70px;
+            /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+
+        .axis text {
+            font-family: sans-serif;
+            font-size: 11px;
+        }
+
+        div.tooltip {
+            position: absolute;
+            text-align: center;
+            width: 60px;
+            height: 28px;
+            padding: 2px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .userInput {
+            width: 65%;
+            margin: 0 auto;
+        }
+
+        #graphingForm {
+            text-align: center;
+        }
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -100,12 +114,32 @@
             </div>-->
         </div>
         <!-- /.row -->
-        <input type="file" id="dataSet" multiple size="50" onchange="readText(this)">
+        <div class="userInput">
+            <form name="graphingForm" action="" id="graphingForm">
+                <center><input type="file" id="dataSet" multiple size="50"></center>
+                <br />
+                <br />
+                <input type="radio" name="pickGraph" id="scatter" value="scatter"> Scatter Plot
+                &nbsp;
+                <input type="radio" name="pickGraph" id="scatter" value="cumulative"> Cumulative Trend
+                &nbsp;
+                <input type="radio" name="pickGraph" id="histogram" value="histogram"> Histogram
+                &nbsp;
+                <input type="radio" name="pickGraph" id="arithmetic" value="arithmetic"> Arithmetic Trend
+                &nbsp;
+                <input type="radio" name="pickGraph" id="laplace" value="laplace"> Laplace Trend
+                &nbsp;
+                <input type="radio" name="pickGraph" id="time-series" value="time-series"> Time Series
+                <br />
+                <br />
+                <button type="button" value="Graph" onclick="readText(dataSet)">Graph</button>
+            </form>
+        </div>
+
         <div id="full-data-graph"></div>
         <div id="partial-data-graph"></div>
     </div>
     <!-- /.container -->
-
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
 

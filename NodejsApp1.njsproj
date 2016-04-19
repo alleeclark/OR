@@ -16,6 +16,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include="corel.html" />
     <Content Include="index.html" />
     <Content Include="README.md" />
     <Content Include="css\bootstrap.css" />
